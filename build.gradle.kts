@@ -15,6 +15,9 @@ repositories {
 dependencies {
     testImplementation(kotlin("test"))
     implementation("org.postgresql:postgresql:42.2.27")
+    implementation ("io.ktor:ktor-client-core:2.3.6")
+    implementation ("io.ktor:ktor-client-cio:2.3.3")
+    implementation("org.mindrot:jbcrypt:0.4")
 }
 
 tasks.test {
