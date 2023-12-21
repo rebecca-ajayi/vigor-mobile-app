@@ -34,3 +34,15 @@ configure<org.flywaydb.gradle.FlywayExtension> {
     user = System.getenv("DB_USER") ?: "fallback-db-user"
     password = System.getenv("DB_PASSWORD") ?: "fallback-db-password"
 }
+
+tasks.register("stage") {
+    dependsOn("build", "clean")
+    doLast {
+        println("Staging app...")
+    }
+}
+
+// Ensure that the stage task is triggered automatically during a Heroku build
+tasks.named("stage") {
+    enabled = project.hasProperty("heroku")
+}
